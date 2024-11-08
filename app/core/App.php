@@ -47,6 +47,5 @@ class App {
             $url = explode('/', $url);
             return $url;
         }
-        return []; // Mengembalikan array kosong jika tidak ada URL
     }
 }
