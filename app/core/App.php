@@ -1,46 +1,52 @@
 <?php
 
 class App {
-    protected $controller = 'home',
+    protected $controller = 'Home',
               $method     = 'index',
-              $prams      = [];
+              $params     = [];
 
     public function __construct() 
     {
         $url = $this->parseURL();
         
-        // ngecek jika ada sebuah file didalam folder controllers yang namanya sama seperti yang ditulis di url
-        // controller
-        if( file_exists('../App/controllers/' . $url[0] . '.php')) {
+        // Controller
+        if (isset($url[0]) && file_exists('../App/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
 
         require_once '../App/controllers/' . $this->controller . '.php';
-        $this->controller = new $this->controller;
-
-        // method
-        if( isset($url[1]) ) {
-            if( method_exists($this->controller, $url[1]) ) {
-                $this->method = $url[1];
-                unset($url[1]);
-            }
+        
+        if (class_exists($this->controller)) {
+            $this->controller = new $this->controller;
+        } else {
+            echo "Controller tidak ditemukan!";
+            return;
         }
 
-        // Kelola parameternya
-        if( !empty($url) ) {
-            var_dump($url);
+        // Method
+        if (isset($url[1]) && method_exists($this->controller, $url[1])) {
+            $this->method = $url[1];
+            unset($url[1]);
         }
+
+        // Kelola parameter
+        if (!empty($url)) {
+            $this->params = array_values($url);
+        }
+
+        // Jalankan controller & method, serta kirimkan params jika ada 
+        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
     public function parseURL() 
     {
-        if( isset($_GET['url'])) {
-            $url = rtrim($_GET['url'], '/'); //function rtrim untuk menghapus slash di akhir url nya jika ada
-            $url = filter_var($url, FILTER_SANITIZE_URL); // supaya url nya bersih dari karakter karakter aneh 
-            $url = explode('/', $url); // merubah url nya menjadi elemen array
-
+        if (isset($_GET['url'])) {
+            $url = rtrim($_GET['url'], '/');
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = explode('/', $url);
             return $url;
         }
+        return []; // Mengembalikan array kosong jika tidak ada URL
     }
 }
