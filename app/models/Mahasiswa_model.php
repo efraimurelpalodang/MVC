@@ -20,7 +20,7 @@ class Mahasiswa_model {
       "email" => "bongnisenggol@gmail.com",
       "jurusan" => "Perkebunan"
     ]
-  ]
+  ];
 
   public function getAllMahasiswa()
   {
