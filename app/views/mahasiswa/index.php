@@ -5,7 +5,9 @@
 
         <ul class="list-group">
           <?php foreach( $data["mhs"] as $mhs ) : ?>
-          <li class="list-group-item"><?= $mhs["nama"]; ?></li>
+          <li class="list-group-item d-flex justify-content-between"><?= $mhs["nama"]; ?>
+            <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-success rounded-pill text-decoration-none text-end">detail</a>
+          </li>
           <?php endforeach; ?>
         </ul>
 
