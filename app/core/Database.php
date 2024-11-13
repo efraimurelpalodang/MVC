@@ -11,10 +11,10 @@ class Database {
   public function __construct()
   {
     // data source name
-    $dsn = "mysql:host={$this->host}dbname={$this->db_name}";
+    $dsn = "mysql:host={$this->host};dbname={$this->db_name}";
     $option = [
-      PDO::ATTR_PERSISTENT => true, //agar koneksi database tetap terjaga
-      PDO::ATTR_ERRORMODE => PDO::ERRORMODE_EXCEPTION
+      PDO::ATTR_PERSISTENT => true, //agar koneksi database tetap terjaga terus
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ];
 
     try {
@@ -44,8 +44,7 @@ class Database {
           $type = PDO::PARAM_NULL;
           break;
         default :
-          $type = PDO::PARAM_STR;
-          
+          $type = PDO::PARAM_STR;        
       }
     }
 
