@@ -41,6 +41,14 @@
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Masukkan email" name="email">
           </div>
+          <label for="jurusan" class="form-label">Jurusan</label>
+          <select class="form-select" aria-label="Default select example" id="jurusan" name="jurusan">
+            <option selected>Pilih jurusan</option>
+            <option value="Teknik Informatika">Teknik Informatika</option>
+            <option value="Teknik Mesin">Teknik Mesin</option>
+            <option value="Perkebunan">Perkebunan</option>
+            <option value="Perikanan">Perikanan</option>
+          </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
