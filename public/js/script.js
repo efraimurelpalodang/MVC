@@ -21,6 +21,7 @@ $(function() {
       method: 'post',
       dataType: 'json',
       success: function(data) {
+        $('#id').val(data.id);
         $('#nama').val(data.nama);
         $('#npm').val(data.npm);
         $('#email').val(data.email);
