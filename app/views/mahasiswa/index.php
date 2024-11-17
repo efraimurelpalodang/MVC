@@ -18,7 +18,7 @@
           <?php foreach( $data["mhs"] as $mhs ) : ?>
           <li class="list-group-item"><?= $mhs["nama"]; ?>
           <a href="<?= BASEURL;?>/mahasiswa/hapus/<?= $mhs["id"]; ?>" class="badge text-bg-danger rounded text-decoration-none text-end float-end ms-1" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
-          <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary rounded text-decoration-none text-end float-end ms-1" data-bs-toggle="modal" data-bs-target="#forModal">ubah</a>
+          <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary rounded text-decoration-none text-end float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#forModal">ubah</a>
           <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-success rounded text-decoration-none text-end float-end ms-1">detail</a>
           </li>
           <?php endforeach; ?>
