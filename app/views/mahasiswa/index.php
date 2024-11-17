@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-lg-6">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#forModal">
+      <button type="button" class="btn btn-success mb-3 tambahData" data-bs-toggle="modal" data-bs-target="#forModal">
         Tambah Data Mahasiswa
       </button>
       <h3>Daftar Mahasiswa</h3>
@@ -18,7 +18,7 @@
           <?php foreach( $data["mhs"] as $mhs ) : ?>
           <li class="list-group-item"><?= $mhs["nama"]; ?>
           <a href="<?= BASEURL;?>/mahasiswa/hapus/<?= $mhs["id"]; ?>" class="badge text-bg-danger rounded text-decoration-none text-end float-end ms-1" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
-          <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary rounded text-decoration-none text-end float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#forModal">ubah</a>
+          <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary rounded text-decoration-none text-end float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#forModal" data-id="<?= $mhs['id']; ?>">ubah</a>
           <a href="<?= BASEURL;?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-success rounded text-decoration-none text-end float-end ms-1">detail</a>
           </li>
           <?php endforeach; ?>
@@ -61,7 +61,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Tambah</button>
+        <button type="submit" class="btn btn-success"></button>
         </form>
       </div>
     </div>
